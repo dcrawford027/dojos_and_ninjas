@@ -3,7 +3,11 @@ from .models import Dojo, Ninja
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    context = {
+        'dojos': Dojo.objects.all(),
+        'allNinjas': Ninja.objects.all(),
+    }
+    return render(request, 'index.html', context)
 
 def addDojo(request):
     postName = request.POST['name']

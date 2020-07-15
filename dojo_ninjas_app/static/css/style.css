@@ -45,3 +45,18 @@ button:hover {
     padding: 30px;
     text-align: center;
 }
+
+.list {
+    width: 450px;
+    margin-left: 400px;
+    padding: 30px;
+}
+
+ul {
+    text-align: left;
+    list-style-position: inside;
+}
+
+li {
+    margin-left: 130px;
+}
