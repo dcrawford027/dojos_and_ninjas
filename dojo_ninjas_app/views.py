@@ -5,7 +5,6 @@ from .models import Dojo, Ninja
 def index(request):
     context = {
         'dojos': Dojo.objects.all(),
-        'allNinjas': Ninja.objects.all(),
     }
     return render(request, 'index.html', context)
 
@@ -19,5 +18,12 @@ def addDojo(request):
 def addNinja(request):
     postFirstName = request.POST['first_name']
     postLastName = request.POST['last_name']
-    postDojo = request.POST['dojo']
+    postDojo = Dojo.objects.get(name=request.POST['dojo'])
     newNinja = Ninja.objects.create(first_name=postFirstName, last_name=postLastName, dojo=postDojo)
+    return redirect('/')
+
+def delete(request):
+    dojoId = int(request.POST['dojo_id'])
+    postDojo = Dojo.objects.get(id=dojoId)
+    postDojo.delete()
+    return redirect('/')
