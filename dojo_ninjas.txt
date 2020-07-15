@@ -1,0 +1,55 @@
+>>> from dojo_ninjas_app.models import *
+
+>>> dojo1 = Dojo.objects.create(name="Bellevue", city="Seatle", state="WA")
+>>> dojo2 = Dojo.objects.create(name="McLean", city="Fairfax", state="VA")
+>>> dojo3 = Dojo.objects.create(name="Boise", city="Boise", state="ID")
+>>> dojo1.name
+'Bellevue'
+>>> dojo2.name
+'McLean'
+>>> dojo3.name
+'Boise'
+
+>>> dojo1.delete()
+(1, {'dojo_ninjas_app.Ninja': 0, 'dojo_ninjas_app.Dojo': 1})
+>>> dojo2.delete()
+(1, {'dojo_ninjas_app.Ninja': 0, 'dojo_ninjas_app.Dojo': 1})
+>>> dojo3.delete()
+(1, {'dojo_ninjas_app.Ninja': 0, 'dojo_ninjas_app.Dojo': 1})
+
+>>> westDojo = Dojo.objects.create(name="West", city="Bellvue", state="WA")
+>>> eastDojo = Dojo.objects.create(name="East", city="McLean", state="VA")
+>>> midwestDojo = Dojo.objects.create(name="Midwest", city="Boise", state="ID")
+
+>>> ninja1 = Ninja.objects.create(first_name="Dustin", last_name="Crawford", dojo=westDojo)
+>>> ninja2 = Ninja.objects.create(first_name="Edward", last_name="Im", dojo=westDojo)
+>>> ninja3 = Ninja.objects.create(first_name="Inigo", last_name="Montoya", dojo=westDojo)
+
+>>> ninja4 = Ninja.objects.create(first_name="Christopher", last_name="Cringle", dojo=eastDojo)
+>>> ninja5 = Ninja.objects.create(first_name="Amerigo", last_name="Vaspucci", dojo=eastDojo)
+>>> ninja6 = Ninja.objects.create(first_name="Pied", last_name="Piper", dojo=eastDojo)
+
+>>> ninja7 = Ninja.objects.create(first_name="Wally", last_name="Eva", dojo=midwestDojo)
+>>> ninja8 = Ninja.objects.create(first_name="Clark", last_name="Kent", dojo=midwestDojo)
+>>> ninja9 = Ninja.objects.create(first_name="Peter", last_name="Parker", dojo=midwestDojo)
+
+In [8]: westDojo.ninjas                                                                                                                
+Out[8]: <django.db.models.fields.related_descriptors.create_reverse_many_to_one_manager.<locals>.RelatedManager at 0x10c893d50>
+
+In [8]: westDojo.ninjas                                                                                                                
+Out[8]: <django.db.models.fields.related_descriptors.create_reverse_many_to_one_manager.<locals>.RelatedManager at 0x10c893d50>
+
+In [13]: ninja9.dojo                                                                                                                   
+Out[13]: <Dojo: Dojo object (7)>(djangoPy3Env) dustincrawford@Dustins-MBP dojo_ninjas_proj % python manage.py makemigrations
+You are trying to add a non-nullable field 'desc' to dojo without a default; we can't do that (the database needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 1
+Please enter the default value now, as valid Python
+The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now
+Type 'exit' to exit this prompt
+>>> "old dojo"
+
+In [4]: newDojo = Dojo.objects.create(name="South", city="Miami", state="FL", desc="New Dojo")
+

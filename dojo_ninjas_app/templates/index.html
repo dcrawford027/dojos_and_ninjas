@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojos and Ninjas</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="top">
+        <div class="dojoForm">
+            <h1>Add a Dojo</h1>
+            <form action="/add_dojo" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <label for="name">Name</label>
+                    <input type="text" name="name">
+                </div>
+                <div class="row">
+                    <label for="city">City</label>
+                    <input type="text" name="city">
+                </div>
+                <div class="row">
+                    <label for="state">State</label>
+                    <input type="text" name="state">
+                </div>
+            </form>
+        </div>
+        <div class="ninjaForm">
+            <h1>Add a Ninja</h1>
+            <form action="/add_ninja" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <label for="first_name">First Name</label>
+                    <input type="text" name="first_name">
+                </div>
+                <div class="row">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" name="last_name">
+                </div>
+                <div class="row">
+                    <label for="dojo">Dojo</label>
+                    <select name="dojo" id="dojo">
+                        <option disabled selected>-select a dojo-</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="bottom">
+        <h1>All the Dojos</h1>
+
+    </div>
+</body>
+</html>
