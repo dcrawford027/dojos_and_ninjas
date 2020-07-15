@@ -27,6 +27,19 @@ select {
     width: 153px;
 }
 
+button {
+    background-color: green;
+    color: white;
+    width: 100px;
+    box-shadow: 3px 3px darkgray;
+    border-radius: 5px;
+    margin-left: 128px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
 .bottom {
     border-top: 5px solid black;
     padding: 30px;

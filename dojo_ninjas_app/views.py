@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from models import Dojo, Ninja
+from .models import Dojo, Ninja
 
 # Create your views here.
 def index(request):
@@ -13,4 +13,7 @@ def addDojo(request):
     return redirect('/')
 
 def addNinja(request):
-    postFirstName = request.POST['']
+    postFirstName = request.POST['first_name']
+    postLastName = request.POST['last_name']
+    postDojo = request.POST['dojo']
+    newNinja = Ninja.objects.create(first_name=postFirstName, last_name=postLastName, dojo=postDojo)
